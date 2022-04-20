@@ -1,9 +1,8 @@
 import Button from "../../components/button";
 import Input from "../../components/Input";
 import Logo from "../../components/logo";
-import { Container, Form, Title } from "./style";
+import { Container, Form, Title, Buttons } from "./style";
 import { useState } from "react";
-import { Buttons } from "../../components/logo/style";
 import { useNavigate } from "react-router-dom";
 
 export default function SignUpPage() {
@@ -28,7 +27,7 @@ export default function SignUpPage() {
         <Button
           color="#FFFFFF"
           background="#000000"
-          text="SIGN-IN WITH GITHUB"
+          text="Sign-in with GITHUB"
           width="100%"
           type="button"
         />
@@ -58,7 +57,7 @@ export default function SignUpPage() {
         />
         <Buttons>
           <Button
-            color={"#4673CA"}
+            color={"#3f61d7"}
             background={"#363636"}
             text="I already have registration"
             type={"button"}
@@ -66,8 +65,8 @@ export default function SignUpPage() {
           />
 
           <Button
-            color={"#363636"}
-            background={"#4673CA"}
+            color={"#000000"}
+            background={"#3f61d7"}
             width={"118px"}
             text="Register"
             type={"submit"}

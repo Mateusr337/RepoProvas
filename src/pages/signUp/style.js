@@ -21,7 +21,7 @@ export const Title = styled.span`
 
   letter-spacing: 0.15px;
 
-  color: #ffffff;
+  color: black;
   align-self: center;
 `;
 
@@ -31,4 +31,9 @@ export const Form = styled.form`
   display: flex;
   flex-direction: column;
   gap: 12px;
+`;
+
+export const Buttons = styled.div`
+  display: flex;
+  justify-content: space-between;
 `;

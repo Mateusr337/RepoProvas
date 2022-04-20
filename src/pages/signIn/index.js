@@ -1,13 +1,15 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "../../components/button";
+import HorizontalDivider from "../../components/horizontalDivider";
 import Input from "../../components/Input";
 import Logo from "../../components/logo";
-import { Buttons } from "../../components/logo/style";
-import { Container, Form, Title } from "./style";
+import { Container, Form, Title, Buttons } from "./style";
+import { BsEyeSlash, BsEye } from "react-icons/bs";
 
 export default function SignInPage() {
   const navigate = useNavigate();
+  const [showPAssword, setShowPassword] = useState(false);
   const [signInData, setSignInData] = useState({
     email: "",
     password: "",
@@ -23,14 +25,14 @@ export default function SignInPage() {
       <Logo />
       <Form>
         <Title>Login</Title>
-        <br />
         <Button
           color="#FFFFFF"
           background="#000000"
-          text="SIGN-IN WITH GITHUB"
+          text="Sign-in with GITHUB"
           width="100%"
           type="button"
         />
+        <HorizontalDivider text={"ou"} color={"#000000"} background={"#000000"} />
         <Input
           type="e-mail"
           placeholder="e-mail"
@@ -49,7 +51,7 @@ export default function SignInPage() {
         />
         <Buttons>
           <Button
-            color={"#4673CA"}
+            color={"#3f61d7"}
             background={"#363636"}
             text="I don't have a register"
             type={"button"}
@@ -57,8 +59,8 @@ export default function SignInPage() {
           />
 
           <Button
-            color={"#363636"}
-            background={"#4673CA"}
+            color={"#000000"}
+            background={"#3f61d7"}
             width={"118px"}
             text="Login"
             type={"submit"}

@@ -8,13 +8,11 @@ export const Text = styled.h1`
   line-height: 45px;
 
   color: #000000;
+
+  display: flex;
+  align-items: center;
 `;
 
 export const Blue = styled.span`
   color: #3f61d7;
-`;
-
-export const Buttons = styled.div`
-  display: flex;
-  justify-content: space-between;
 `;
