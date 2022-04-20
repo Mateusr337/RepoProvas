@@ -4,12 +4,12 @@ import Button from "../../components/button";
 import HorizontalDivider from "../../components/horizontalDivider";
 import Input from "../../components/Input";
 import Logo from "../../components/logo";
-import { Container, Form, Title, Buttons } from "./style";
+import { Container, Form, Title, Buttons, InputContainer, IconInput } from "./style";
 import { BsEyeSlash, BsEye } from "react-icons/bs";
 
 export default function SignInPage() {
   const navigate = useNavigate();
-  const [showPAssword, setShowPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const [signInData, setSignInData] = useState({
     email: "",
     password: "",
@@ -41,14 +41,23 @@ export default function SignInPage() {
           value={signInData.email}
           required
         />
-        <Input
-          type="password"
-          placeholder="password"
-          name="password"
-          onChange={handleChange}
-          value={signInData.password}
-          required
-        />
+        <InputContainer>
+          <Input
+            type={showPassword ? "text" : "password"}
+            placeholder="password"
+            name="password"
+            onChange={handleChange}
+            value={signInData.password}
+            required
+          />
+          <IconInput>
+            {showPassword ? (
+              <BsEyeSlash onClick={() => setShowPassword(false)} />
+            ) : (
+              <BsEye onClick={() => setShowPassword(true)} />
+            )}
+          </IconInput>
+        </InputContainer>
         <Buttons>
           <Button
             color={"#3f61d7"}

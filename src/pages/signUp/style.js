@@ -37,3 +37,21 @@ export const Buttons = styled.div`
   display: flex;
   justify-content: space-between;
 `;
+
+export const InputContainer = styled.div`
+  position: relative;
+`;
+
+export const IconInput = styled.div`
+  width: 17px;
+  height: 15px;
+
+  position: absolute;
+
+  top: 0;
+  bottom: 0;
+  right: 10px;
+  margin: auto;
+
+  cursor: pointer;
+`;
