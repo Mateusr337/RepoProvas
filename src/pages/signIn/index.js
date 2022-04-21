@@ -4,7 +4,14 @@ import Button from "../../components/button";
 import HorizontalDivider from "../../components/horizontalDivider";
 import Input from "../../components/Input";
 import Logo from "../../components/logo";
-import { Container, Form, Title, Buttons, InputContainer, IconInput } from "./style";
+import {
+  Container,
+  Form,
+  Title,
+  Buttons,
+  InputContainer,
+  IconInput,
+} from "./style";
 import { BsEyeSlash, BsEye } from "react-icons/bs";
 import handleChange from "../../utils/handleChangeInput.js";
 import { ToastContainer, toast } from "react-toastify";
@@ -33,7 +40,7 @@ export default function SignInPage() {
     const promise = api.validateAuth(auth.auth);
     promise
       .then(() => {
-        navigate("/disciplines");
+        navigate("/home");
       })
       .catch(() => {
         toast.error("Session expired! Do login again!", {
@@ -78,7 +85,11 @@ export default function SignInPage() {
           Sign-in with GITHUB
         </Button>
 
-        <HorizontalDivider text={"ou"} color={"#000000"} background={"#000000"} />
+        <HorizontalDivider
+          text={"ou"}
+          color={"#000000"}
+          background={"#000000"}
+        />
 
         <Input
           type="e-mail"
@@ -125,7 +136,11 @@ export default function SignInPage() {
             type={"submit"}
             disabled={isLoading}
           >
-            {isLoading ? <ThreeDots color="#FFFFFF" height={15} width={40} /> : "Login"}
+            {isLoading ? (
+              <ThreeDots color="#FFFFFF" height={15} width={40} />
+            ) : (
+              "Login"
+            )}
           </Button>
         </Buttons>
       </Form>

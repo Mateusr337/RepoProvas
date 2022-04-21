@@ -1,21 +1,14 @@
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import Button from "../../components/button";
-import HorizontalDivider from "../../components/horizontalDivider";
-import Input from "../../components/Input";
-import Logo from "../../components/logo";
-import { Buttons, Container } from "./style";
-import { BsEyeSlash, BsEye } from "react-icons/bs";
-import handleChange from "../../utils/handleChangeInput.js";
-import { ToastContainer, toast } from "react-toastify";
+import { Buttons, Container, Main } from "./style";
 import "react-toastify/dist/ReactToastify.css";
-import { ThreeDots } from "react-loader-spinner";
-import * as api from "../../services/api";
-import useAuth from "../../hooks/useAuth";
 import Header from "../../components/header";
+import Append from "../../components/append";
+import Tests from "../../components/tests";
 
 export default function HomePage() {
   const [isLoading, setIsLoading] = useState(false);
+  const [screen, setScreen] = useState("disciplines");
 
   return (
     <Container>
@@ -27,6 +20,7 @@ export default function HomePage() {
           color={"#3f61d7"}
           width={"150px"}
           disabled={isLoading}
+          action={() => setScreen("disciplines")}
         >
           Disciplines
         </Button>
@@ -35,6 +29,7 @@ export default function HomePage() {
           color={"#3f61d7"}
           width={"150px"}
           disabled={isLoading}
+          action={() => setScreen("teachers")}
         >
           Teacher
         </Button>
@@ -43,17 +38,17 @@ export default function HomePage() {
           color={"#3f61d7"}
           width={"150px"}
           disabled={isLoading}
+          action={() => setScreen("append")}
         >
           Append
         </Button>
       </Buttons>
 
-      <ToastContainer
-        toastStyle={{ backgroundColor: "#252526", top: "100px" }}
-        limit={1}
-        dark={true}
-        position={"top-center"}
-      />
+      <Main>
+        {screen === "disciplines" && <Tests typeFilter={"disciplines"} />}
+        {screen === "append" && <Append />}
+        {screen === "teachers" && <Tests typeFilter={"teachers"} />}
+      </Main>
     </Container>
   );
 }

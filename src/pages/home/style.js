@@ -5,8 +5,8 @@ export const Container = styled.div`
   height: 100vh;
 
   background: #363636;
-  gap: 100px;
-  padding-top: 150px;
+  gap: 20px;
+  padding-top: 100px;
 
   display: flex;
   flex-direction: column;
@@ -21,5 +21,16 @@ export const Buttons = styled.div`
 
   display: flex;
   justify-content: center;
+  align-items: center;
+`;
+
+export const Main = styled.div`
+  width: 80%;
+  min-height: 40px;
+
+  padding: 20px;
+
+  display: flex;
+  flex-direction: column;
   align-items: center;
 `;

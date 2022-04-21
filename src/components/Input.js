@@ -1,15 +1,15 @@
 import styled from "styled-components";
 
 const Input = styled.input`
-  width: 100%;
+  width: ${(props) => props.width || "100%"};
   height: 55px;
-  max-height: 100%;
 
   background: #ffffff;
   color: #111;
   border-radius: 6px;
   padding-left: 12px;
   border: none;
+  align-self: ${(props) => props.align};
 
   font-size: 16px;
   font-weight: 500;

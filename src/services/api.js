@@ -30,3 +30,13 @@ export function validateAuth(data) {
   const promise = api.get("/validateAuth", config(data));
   return promise;
 }
+
+export function insertTerms(termName, token) {
+  const promise = api.post("/terms", { name: termName }, config(token));
+  return promise;
+}
+
+export function getTerms(token) {
+  const promise = api.get("/terms", config(token));
+  return promise;
+}
