@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "../../components/button";
 import HorizontalDivider from "../../components/horizontalDivider";
@@ -11,9 +11,13 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { ThreeDots } from "react-loader-spinner";
 import * as api from "../../services/api";
+import useAuth from "../../hooks/useAuth";
 
 export default function SignInPage() {
   const navigate = useNavigate();
+  const auth = useAuth();
+  const customId = "custom-id-yes";
+
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [signInData, setSignInData] = useState({
@@ -21,17 +25,49 @@ export default function SignInPage() {
     password: "",
   });
 
+  useEffect(() => {
+    if (auth.auth) validateAuth();
+  }, []);
+
+  function validateAuth() {
+    const promise = api.validateAuth(auth.auth);
+    promise
+      .then(() => {
+        navigate("/disciplines");
+      })
+      .catch(() => {
+        toast.error("Session expired! Do login again!", {
+          toastId: customId,
+        });
+      });
+  }
+
   function login(e) {
     e.preventDefault();
 
-    api.login(signInData);
+    setIsLoading(true);
+    const promise = api.login(signInData);
+
+    toast.promise(promise, {
+      pending: "Loading ...",
+      error: "Login failed!",
+    });
+
+    promise
+      .then((response) => {
+        auth.login(response.data);
+        navigate("/disciplines");
+      })
+      .catch(() => setIsLoading(false));
   }
 
   return (
     <Container>
       <Logo />
+
       <Form onSubmit={login}>
         <Title>Login</Title>
+
         <Button
           color="#FFFFFF"
           background="#000000"
@@ -41,7 +77,9 @@ export default function SignInPage() {
         >
           Sign-in with GITHUB
         </Button>
+
         <HorizontalDivider text={"ou"} color={"#000000"} background={"#000000"} />
+
         <Input
           type="e-mail"
           placeholder="e-mail"
@@ -50,6 +88,7 @@ export default function SignInPage() {
           value={signInData.email}
           required
         />
+
         <InputContainer>
           <Input
             type={showPassword ? "text" : "password"}
@@ -67,6 +106,7 @@ export default function SignInPage() {
             )}
           </IconInput>
         </InputContainer>
+
         <Buttons>
           <Button
             color={"#3f61d7"}
@@ -89,6 +129,13 @@ export default function SignInPage() {
           </Button>
         </Buttons>
       </Form>
+
+      <ToastContainer
+        toastStyle={{ backgroundColor: "#252526", top: "100px" }}
+        limit={1}
+        dark={true}
+        position={"top-center"}
+      />
     </Container>
   );
 }

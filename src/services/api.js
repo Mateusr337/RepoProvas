@@ -23,3 +23,10 @@ export function login(data) {
   const promise = api.post("/login", { email, password });
   return promise;
 }
+
+export function validateAuth(data) {
+  const { email, password } = data;
+
+  const promise = api.get("/validateAuth", config(data));
+  return promise;
+}

@@ -3,15 +3,19 @@ import SignInPage from "./pages/signIn";
 import SignUpPage from "./pages/signUp";
 import "./styles/reset.css";
 import "./styles/style.css";
+import { AuthProvider } from "./contexts/AuthContext";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<SignInPage />} />
-        <Route path="/sign-up" element={<SignUpPage />} />
-      </Routes>
-    </BrowserRouter>
+    <AuthProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<SignInPage />} />
+          <Route path="/sign-up" element={<SignUpPage />} />
+          <Route path="/disciplines" element={<></>} />
+        </Routes>
+      </BrowserRouter>
+    </AuthProvider>
   );
 }
 
