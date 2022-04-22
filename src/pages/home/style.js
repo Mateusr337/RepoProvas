@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  min-height: 100vh;
 
   background: #363636;
   gap: 20px;
-  padding-top: 100px;
+  padding: 100px 0px;
 
   display: flex;
   flex-direction: column;

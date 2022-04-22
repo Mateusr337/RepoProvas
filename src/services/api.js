@@ -25,18 +25,11 @@ export function login(data) {
 }
 
 export function validateAuth(data) {
-  const { email, password } = data;
-
   const promise = api.get("/validateAuth", config(data));
   return promise;
 }
 
-export function insertTerms(termName, token) {
-  const promise = api.post("/terms", { name: termName }, config(token));
-  return promise;
-}
-
-export function getTerms(token) {
-  const promise = api.get("/terms", config(token));
+export function insertTest(data, token) {
+  const promise = api.post("/tests", data, config(token));
   return promise;
 }
