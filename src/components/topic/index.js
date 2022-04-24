@@ -1,5 +1,6 @@
 import { Container, Main, SubTitle, Title } from "./style";
 import { BiArrowToLeft, BiArrowToBottom } from "react-icons/bi";
+import { BsArrowReturnRight } from "react-icons/bs";
 import { useEffect, useState } from "react";
 
 export default function Topic({
@@ -15,19 +16,28 @@ export default function Topic({
     let titlesArray = [];
 
     tests.map((test) => {
-      if (!titlesArray.includes(test.teacherDiscipline[filterElement].name)) {
-        titlesArray.push(test.teacherDiscipline[filterElement].name);
+      if (!titlesArray.includes(elementSearch(test))) {
+        titlesArray.push(elementSearch(test));
       }
     });
 
     setTitles(titlesArray);
   }, [tests]);
 
-  console.log(tests);
-
   function returnSubtitle(test) {
     if (subFilterElement === "teacher")
       return [test.teacherDiscipline.teacher.name, test.category.name];
+    if (subFilterElement === "discipline")
+      return [
+        test.teacherDiscipline.discipline.name,
+        test.teacherDiscipline.discipline.term.number + "° T",
+      ];
+  }
+
+  function elementSearch(test) {
+    if (filterElement === "discipline")
+      return test.teacherDiscipline.discipline.name;
+    if (filterElement === "category") return test.category.name;
   }
 
   return (
@@ -41,9 +51,12 @@ export default function Topic({
         <Main>
           {titles.map((title, i) => (
             <>
-              <Title key={i}>{title}</Title>
+              <Title key={i}>
+                <BsArrowReturnRight /> {title?.toUpperCase()}
+              </Title>
+
               {tests.map((test, index) => {
-                if (test.teacherDiscipline[filterElement].name === title)
+                if (elementSearch(test) === title)
                   return (
                     <SubTitle target="_blank" href={test.pdfUrl} key={index}>
                       {test.name} - {returnSubtitle(test)[0]} -{" "}

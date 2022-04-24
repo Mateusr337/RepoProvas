@@ -43,3 +43,8 @@ export function getTests(token) {
   const promise = api.get("/tests", config(token));
   return promise;
 }
+
+export function getTeachers(token) {
+  const promise = api.get("/teachers", config(token));
+  return promise;
+}

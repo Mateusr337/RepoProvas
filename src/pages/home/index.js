@@ -6,9 +6,9 @@ import Header from "../../components/header";
 import Append from "../../components/append";
 import Tests from "../../components/tests";
 import Disciplines from "../../components/disciplines";
+import Teachers from "../../components/teachers";
 
 export default function HomePage() {
-  const [isLoading, setIsLoading] = useState(false);
   const [screen, setScreen] = useState("disciplines");
 
   return (
@@ -20,7 +20,6 @@ export default function HomePage() {
           background={"#252526"}
           color={"#3f61d7"}
           width={"150px"}
-          disabled={isLoading}
           action={() => setScreen("disciplines")}
         >
           Disciplines
@@ -29,7 +28,6 @@ export default function HomePage() {
           background={"#252526"}
           color={"#3f61d7"}
           width={"150px"}
-          disabled={isLoading}
           action={() => setScreen("teachers")}
         >
           Teacher
@@ -38,7 +36,6 @@ export default function HomePage() {
           background={"#252526"}
           color={"#3f61d7"}
           width={"150px"}
-          disabled={isLoading}
           action={() => setScreen("append")}
         >
           Append
@@ -48,7 +45,7 @@ export default function HomePage() {
       <Main>
         {screen === "disciplines" && <Tests typeFilter={<Disciplines />} />}
         {screen === "append" && <Append />}
-        {screen === "teachers" && <Tests typeFilter={"teachers"} />}
+        {screen === "teachers" && <Tests typeFilter={<Teachers />} />}
       </Main>
     </Container>
   );

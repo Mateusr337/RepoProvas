@@ -31,7 +31,7 @@ export const Main = styled.div`
 export const Title = styled.div`
   width: 100%;
 
-  padding: 8px;
+  padding: 5px 15px;
 
   font-family: "Poppins";
   font-style: normal;
@@ -41,7 +41,7 @@ export const Title = styled.div`
 `;
 
 export const SubTitle = styled.a`
-  padding: 0px 20px;
+  padding: 0px 35px;
 
   font-family: "Poppins";
   font-style: normal;
