@@ -5,6 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Header from "../../components/header";
 import Append from "../../components/append";
 import Tests from "../../components/tests";
+import Disciplines from "../../components/disciplines";
 
 export default function HomePage() {
   const [isLoading, setIsLoading] = useState(false);
@@ -45,7 +46,7 @@ export default function HomePage() {
       </Buttons>
 
       <Main>
-        {screen === "disciplines" && <Tests typeFilter={"disciplines"} />}
+        {screen === "disciplines" && <Tests typeFilter={<Disciplines />} />}
         {screen === "append" && <Append />}
         {screen === "teachers" && <Tests typeFilter={"teachers"} />}
       </Main>

@@ -33,3 +33,13 @@ export function insertTest(data, token) {
   const promise = api.post("/tests", data, config(token));
   return promise;
 }
+
+export function getTerms(token) {
+  const promise = api.get("/terms", config(token));
+  return promise;
+}
+
+export function getTests(token) {
+  const promise = api.get("/tests", config(token));
+  return promise;
+}
