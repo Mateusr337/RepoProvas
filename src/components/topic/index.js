@@ -27,7 +27,7 @@ export default function Topic({
 
   function returnSubtitle(test) {
     if (subFilterElement === "teacher")
-      return test.teacherDiscipline.teacher.name;
+      return [test.teacherDiscipline.teacher.name, test.category.name];
   }
 
   return (
@@ -46,7 +46,8 @@ export default function Topic({
                 if (test.teacherDiscipline[filterElement].name === title)
                   return (
                     <SubTitle target="_blank" href={test.pdfUrl} key={index}>
-                      {test.name} - {returnSubtitle(test)}
+                      {test.name} - {returnSubtitle(test)[0]} -{" "}
+                      {returnSubtitle(test)[1].toUpperCase()}
                     </SubTitle>
                   );
               })}
