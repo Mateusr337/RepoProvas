@@ -19,8 +19,7 @@ export function register(data) {
 
 export function login(data) {
   const { email, password } = data;
-
-  const promise = api.post("/login", { email, password });
+  const promise = api.post(`/login`, { email, password });
   return promise;
 }
 

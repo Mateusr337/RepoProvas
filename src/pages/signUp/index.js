@@ -1,7 +1,14 @@
 import Button from "../../components/button";
 import Input from "../../components/Input";
 import Logo from "../../components/logo";
-import { Container, Form, Title, Buttons, IconInput, InputContainer } from "./style";
+import {
+  Container,
+  Form,
+  Title,
+  Buttons,
+  IconInput,
+  InputContainer,
+} from "./style";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { BsEyeSlash, BsEye } from "react-icons/bs";
@@ -66,7 +73,11 @@ export default function SignUpPage() {
           Sign-in with GITHUB
         </Button>
 
-        <HorizontalDivider text={"ou"} color={"#000000"} background={"#000000"} />
+        <HorizontalDivider
+          text={"ou"}
+          color={"#000000"}
+          background={"#000000"}
+        />
 
         <Input
           type="e-mail"

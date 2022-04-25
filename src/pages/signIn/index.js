@@ -19,6 +19,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { ThreeDots } from "react-loader-spinner";
 import * as api from "../../services/api";
 import useAuth from "../../hooks/useAuth";
+import ButtonGithub from "../../components/ButtonGitHub";
 
 export default function SignInPage() {
   const navigate = useNavigate();
@@ -63,7 +64,7 @@ export default function SignInPage() {
     promise
       .then((response) => {
         auth.login(response.data);
-        navigate("/disciplines");
+        navigate("/home");
       })
       .catch(() => setIsLoading(false));
   }
@@ -75,15 +76,7 @@ export default function SignInPage() {
       <Form onSubmit={login}>
         <Title>Login</Title>
 
-        <Button
-          color="#FFFFFF"
-          background="#000000"
-          disabled={isLoading}
-          width="100%"
-          type="button"
-        >
-          Sign-in with GITHUB
-        </Button>
+        <ButtonGithub />
 
         <HorizontalDivider
           text={"ou"}
