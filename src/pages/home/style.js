@@ -15,7 +15,7 @@ export const Container = styled.div`
 
 export const Buttons = styled.div`
   width: 100%;
-  height: 100px;
+  height: 30px;
 
   gap: 30px;
 

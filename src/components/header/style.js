@@ -14,3 +14,5 @@ export const Container = styled.div`
   top: 0;
   left: 0;
 `;
+
+export const InputContainer = styled.div``;

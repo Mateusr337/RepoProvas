@@ -3,7 +3,7 @@ import useAuth from "../../hooks/useAuth";
 import Button from "../button";
 import Input from "../Input";
 import Logo from "../logo";
-import { Container, Top } from "./style";
+import { Container } from "./style";
 
 export default function Header() {
   const navigate = useNavigate();
@@ -17,8 +17,6 @@ export default function Header() {
   return (
     <Container>
       <Logo />
-
-      <Input placeholder="Search by discipline" width={"400px"} />
 
       <Button
         height={"30px"}

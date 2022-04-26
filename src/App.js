@@ -5,6 +5,7 @@ import "./styles/reset.css";
 import "./styles/style.css";
 import { AuthProvider } from "./contexts/AuthContext";
 import HomePage from "./pages/home";
+import GithubPage from "./pages/githubPage";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="/" element={<SignInPage />} />
           <Route path="/sign-up" element={<SignUpPage />} />
           <Route path="/home" element={<HomePage />} />
+          <Route path="/github/callback" element={<GithubPage />} />
         </Routes>
       </BrowserRouter>
     </AuthProvider>

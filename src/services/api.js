@@ -47,3 +47,25 @@ export function getTeachers(token) {
   const promise = api.get("/teachers", config(token));
   return promise;
 }
+
+export function GithubCallback(code, access_token) {
+  const promise = api.get(
+    `/github/callback?code=${code}&access_token=${access_token}`
+  );
+  return promise;
+}
+
+export function GithubCallbackSuccess(access_token) {
+  const promise = api.get(`/success?access_token=${access_token}`);
+  return promise;
+}
+
+export async function LoginWithGithub(data) {
+  const promise = api.get("/token");
+  return promise;
+}
+
+export async function searchDisciplines(name, token) {
+  const promise = api.get(`/disciplines/${name}`, config(token));
+  return promise;
+}

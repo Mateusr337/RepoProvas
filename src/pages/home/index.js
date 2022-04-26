@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "../../components/button";
 import { Buttons, Container, Main } from "./style";
 import "react-toastify/dist/ReactToastify.css";
@@ -7,6 +7,7 @@ import Append from "../../components/append";
 import Tests from "../../components/tests";
 import Disciplines from "../../components/disciplines";
 import Teachers from "../../components/teachers";
+import * as api from "../../services/api";
 
 export default function HomePage() {
   const [screen, setScreen] = useState("disciplines");
