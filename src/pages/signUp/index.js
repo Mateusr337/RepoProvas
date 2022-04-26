@@ -18,6 +18,7 @@ import * as api from "../../services/api";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { ThreeDots } from "react-loader-spinner";
+import ButtonGithub from "../../components/ButtonGitHub";
 
 export default function SignUpPage() {
   const navigate = useNavigate();
@@ -63,15 +64,7 @@ export default function SignUpPage() {
       <Form onSubmit={signUp}>
         <Title>Register</Title>
 
-        <Button
-          color="#FFFFFF"
-          background="#000000"
-          width="100%"
-          type="button"
-          disabled={isLoading}
-        >
-          Sign-in with GITHUB
-        </Button>
+        <ButtonGithub />
 
         <HorizontalDivider
           text={"ou"}

@@ -60,8 +60,8 @@ export function GithubCallbackSuccess(access_token) {
   return promise;
 }
 
-export async function LoginWithGithub(data) {
-  const promise = api.get("/token");
+export async function LoginWithGithub(email) {
+  const promise = api.post("/login/github", { email });
   return promise;
 }
 
