@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import { Container, InputContainer } from "./style";
+import { Container } from "./style";
 import * as api from "../../services/api";
 import useAuth from "../../hooks/useAuth";
 import Topic from "../topic";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { ThreeDots } from "react-loader-spinner";
-import Input from "../Input";
+import InputSuggests from "../inputSuggests";
 
 export default function Disciplines() {
   const { auth } = useAuth();
@@ -22,21 +22,12 @@ export default function Disciplines() {
     promiseTests.then((response) => setTests(response.data));
   }, [auth]);
 
-  function searchDiscipline(e) {
-    api
-      .searchDisciplines(e.target.value, auth)
-      .then((response) => console.log(response.data));
-  }
-
   return (
     <>
-      <InputContainer>
-        <Input
-          placeholder="Search by discipline"
-          width={"400px"}
-          onChange={(e) => searchDiscipline(e)}
-        />
-      </InputContainer>
+      <InputSuggests
+        inputText={"disciplines"}
+        typeSearch={"searchDisciplines"}
+      />
 
       <Container>
         {terms.map((term, i) => {

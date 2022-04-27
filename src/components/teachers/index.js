@@ -6,6 +6,7 @@ import Topic from "../topic";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { ThreeDots } from "react-loader-spinner";
+import InputSuggests from "../inputSuggests";
 
 export default function Teachers() {
   const { auth } = useAuth();
@@ -22,28 +23,32 @@ export default function Teachers() {
   }, []);
 
   return (
-    <Container>
-      {teachers.map((teacher, i) => {
-        const filterTests = tests.filter(
-          (test) => test.teacherDiscipline.teacher.id === teacher.id
-        );
+    <>
+      <InputSuggests inputText={"teachers"} typeSearch={"searchTeachers"} />
 
-        return (
-          <Topic
-            filterElement={"category"}
-            subFilterElement={"discipline"}
-            key={i}
-            tests={filterTests}
-          >{`${teacher.name}`}</Topic>
-        );
-      })}
+      <Container>
+        {teachers.map((teacher, i) => {
+          const filterTests = tests.filter(
+            (test) => test.teacherDiscipline.teacher.id === teacher.id
+          );
 
-      <ToastContainer
-        toastStyle={{ backgroundColor: "#252526", top: "100px" }}
-        limit={1}
-        dark={true}
-        position={"top-center"}
-      />
-    </Container>
+          return (
+            <Topic
+              filterElement={"category"}
+              subFilterElement={"discipline"}
+              key={i}
+              tests={filterTests}
+            >{`${teacher.name}`}</Topic>
+          );
+        })}
+
+        <ToastContainer
+          toastStyle={{ backgroundColor: "#252526", top: "100px" }}
+          limit={1}
+          dark={true}
+          position={"top-center"}
+        />
+      </Container>
+    </>
   );
 }

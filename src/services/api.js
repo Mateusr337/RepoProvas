@@ -69,3 +69,8 @@ export async function searchDisciplines(name, token) {
   const promise = api.get(`/disciplines/${name}`, config(token));
   return promise;
 }
+
+export async function searchTeachers(name, token) {
+  const promise = api.get(`/teachers/${name}`, config(token));
+  return promise;
+}
